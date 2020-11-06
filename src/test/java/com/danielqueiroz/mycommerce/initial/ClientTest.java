@@ -1,8 +1,9 @@
-package com.danielqueiroz.mycommerce;
+package com.danielqueiroz.mycommerce.initial;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.danielqueiroz.mycommerce.EntityManagerTest;
 import com.danielqueiroz.mycommerce.model.Client;
 
 public class ClientTest extends EntityManagerTest{

@@ -1,10 +1,11 @@
-package com.danielqueiroz.mycommerce;
+package com.danielqueiroz.mycommerce.initial;
 
 import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.danielqueiroz.mycommerce.EntityManagerTest;
 import com.danielqueiroz.mycommerce.model.Product;
 
 public class TransactionsTest extends EntityManagerTest{
