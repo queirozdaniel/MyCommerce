@@ -13,7 +13,7 @@ public class MappingEnumerationsTest extends EntityManagerTest {
 	public void testingEnum() {
 		
 		Client client = new Client();
-		client.setId(5L);
+//		client.setId(5L);
 		client.setName("José da Silva");
 		client.setGender(Gender.MALE);
 		

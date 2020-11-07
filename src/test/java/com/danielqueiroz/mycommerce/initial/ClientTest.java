@@ -11,7 +11,7 @@ public class ClientTest extends EntityManagerTest{
 	@Test
 	public void createClient() {
 		Client client = new Client();
-		client.setId(2L);
+//		client.setId(2L);
 		client.setName("Luana Silva");
 		
 		entityManager.persist(client);

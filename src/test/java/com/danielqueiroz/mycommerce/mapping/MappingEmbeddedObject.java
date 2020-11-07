@@ -26,7 +26,7 @@ public class MappingEmbeddedObject extends EntityManagerTest{
 		address.setComplement("--");
 		
 		Order order = new Order();
-		order.setId(1L);
+//		order.setId(1L);
 		order.setRequestDate(LocalDateTime.now());
 		order.setStatus(OrderStatus.WAITING);
 		order.setTotal(new BigDecimal(200));

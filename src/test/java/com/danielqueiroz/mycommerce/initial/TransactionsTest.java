@@ -13,7 +13,7 @@ public class TransactionsTest extends EntityManagerTest{
 	@Test
 	public void insertObject() {
 		Product product = new Product();
-		product.setId(2L);
+//		product.setId(2L);
 		product.setName("Camêra Kanon");
 		product.setDescription("A melhor qualidade para registar seus melhores momentos");
 		product.setPrice(BigDecimal.valueOf(200));
@@ -46,7 +46,7 @@ public class TransactionsTest extends EntityManagerTest{
 	@Test
 	public void updateObject() {
 		Product product = new Product();
-		product.setId(1L);
+//		product.setId(1L);
 		product.setName("Kindle Pro");
 		product.setDescription("Conheça o novo modelo do eReader mais completo");
 		product.setPrice(BigDecimal.valueOf(400));
@@ -80,7 +80,7 @@ public class TransactionsTest extends EntityManagerTest{
 	@Test
 	public void insertObjectWithMerge() {
 		Product product = new Product();
-		product.setId(3L);
+//		product.setId(3L);
 		product.setName("Microfone Elgato");
 		product.setDescription("A melhor captuara e qualidade para sua voz");
 		product.setPrice(BigDecimal.valueOf(600));
