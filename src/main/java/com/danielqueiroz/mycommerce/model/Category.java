@@ -1,15 +1,12 @@
 package com.danielqueiroz.mycommerce.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,7 +20,11 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	
-	@Column(name = "category_father_id")
-	private Long fatherId;
+
+	@ManyToOne
+	@JoinColumn(name = "category_father_id")
+	private Category categoryFather;
+
+	@OneToMany(mappedBy = "categoryFather")
+	private List<Category> categories;
 }

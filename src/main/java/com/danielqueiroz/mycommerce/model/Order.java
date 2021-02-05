@@ -2,6 +2,7 @@ package com.danielqueiroz.mycommerce.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -22,6 +23,7 @@ public class Order {
 	private Long id;
 
 	@ManyToOne
+	@JoinColumn(name = "client_id")
 	private Client client;
 	
 	@Column(name = "request_date")
@@ -39,5 +41,8 @@ public class Order {
 	
 	@Embedded
 	private Address deliveryAddress;
-	
+
+	@OneToMany(mappedBy = "product")
+	private List<OrderedItem> orderedItems;
+
 }

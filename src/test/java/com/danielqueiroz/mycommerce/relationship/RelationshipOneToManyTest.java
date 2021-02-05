@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class RelationshipManyToOneTest extends EntityManagerTest {
+public class RelationshipOneToManyTest extends EntityManagerTest {
 
     @Test
     public void checkRelationship(){
@@ -18,7 +18,6 @@ public class RelationshipManyToOneTest extends EntityManagerTest {
         order.setStatus(OrderStatus.WAITING);
         order.setRequestDate(LocalDateTime.now());
         order.setTotal(BigDecimal.TEN);
-
         order.setClient(client);
 
         entityManager.getTransaction().begin();
@@ -27,10 +26,9 @@ public class RelationshipManyToOneTest extends EntityManagerTest {
 
         entityManager.clear();
 
-        Order orderNew = entityManager.find(Order.class, order.getId());
-        Assertions.assertNotNull(orderNew.getClient());
+        Client clientNew = entityManager.find(Client.class, client.getId());
+        Assertions.assertFalse(clientNew.getOrders().isEmpty());
     }
-
 
     @Test
     public void checkRelationshipOrderedItem(){
@@ -56,10 +54,9 @@ public class RelationshipManyToOneTest extends EntityManagerTest {
 
         entityManager.clear();
 
-        OrderedItem orderItemNew = entityManager.find(OrderedItem.class, orderedItem.getId());
-        Assertions.assertNotNull(orderItemNew.getProduct());
-        Assertions.assertNotNull(orderItemNew.getOrder());
-
+        Order orderNew = entityManager.find(Order.class, order.getId());
+        Assertions.assertFalse(orderNew.getOrderedItems().isEmpty());
     }
+
 
 }
