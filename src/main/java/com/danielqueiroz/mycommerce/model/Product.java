@@ -1,12 +1,9 @@
 package com.danielqueiroz.mycommerce.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -26,5 +23,11 @@ public class Product {
 	private String name;
 	private String description;
 	private BigDecimal price;
+
+	@ManyToMany
+	@JoinTable(name = "product_category",
+			joinColumns = @JoinColumn(name = "product_id"),
+			inverseJoinColumns = @JoinColumn(name = "category_id"))
+	private List<Category> categories;
 	
 }
