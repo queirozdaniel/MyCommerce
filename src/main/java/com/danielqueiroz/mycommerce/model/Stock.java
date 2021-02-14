@@ -1,11 +1,6 @@
 package com.danielqueiroz.mycommerce.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,8 +17,10 @@ public class Stock {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name = "product_id")
-	private Long productId;
+
+	@OneToOne(optional = false)
+	@JoinColumn(name = "product_id")
+	private Product product;
+
 	private Integer amount;
 }

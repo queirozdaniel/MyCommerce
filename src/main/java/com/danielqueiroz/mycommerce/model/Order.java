@@ -22,7 +22,7 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "client_id")
 	private Client client;
 	
@@ -46,7 +46,7 @@ public class Order {
 	@OneToOne(mappedBy = "order")
 	private PaymentCard paymentCard;
 
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
 	private List<OrderedItem> orderedItems;
 
 }

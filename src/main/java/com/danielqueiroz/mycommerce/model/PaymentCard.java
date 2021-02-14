@@ -18,7 +18,7 @@ public class PaymentCard {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne
+	@OneToOne(optional = false)
 	@JoinColumn(name = "order_id")
 	private Order order;
 	
