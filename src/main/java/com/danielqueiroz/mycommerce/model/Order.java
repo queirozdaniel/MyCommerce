@@ -32,8 +32,9 @@ public class Order {
 	@Column(name = "completion_date")
 	private LocalDateTime completionDate;
 	
-	@Column(name = "invoice_id")
-	private Long invoiceId;
+	@OneToOne(mappedBy = "order")
+	private Invoice invoice;
+
 	private BigDecimal total;
 	
 	@Enumerated(EnumType.STRING)
@@ -41,6 +42,9 @@ public class Order {
 	
 	@Embedded
 	private Address deliveryAddress;
+
+	@OneToOne(mappedBy = "order")
+	private PaymentCard paymentCard;
 
 	@OneToMany(mappedBy = "product")
 	private List<OrderedItem> orderedItems;
