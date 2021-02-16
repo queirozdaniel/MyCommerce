@@ -1,4 +1,4 @@
-package com.danielqueiroz.mycommerce.relationship;
+package com.danielqueiroz.mycommerce.entitymanager;
 
 import com.danielqueiroz.mycommerce.EntityManagerTest;
 import com.danielqueiroz.mycommerce.model.Category;
