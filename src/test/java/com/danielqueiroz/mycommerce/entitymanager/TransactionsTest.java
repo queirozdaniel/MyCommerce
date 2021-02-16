@@ -7,9 +7,14 @@ public class TransactionsTest extends EntityManagerTest {
 
     @Test
     public void checkTransaction(){
+        // Init Transaction
+        entityManager.getTransaction().begin();
 
+        // Confirm Transaction
+        entityManager.getTransaction().commit();
 
-
+        // Cancel Transaction
+        entityManager.getTransaction().rollback();
     }
 
 }
