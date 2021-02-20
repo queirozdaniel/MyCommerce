@@ -28,6 +28,9 @@ public class Order {
 	
 	@Column(name = "request_date")
 	private LocalDateTime requestDate;
+
+	@Column(name = "updated_request_date")
+	private LocalDateTime updatedRequestDate;
 	
 	@Column(name = "completion_date")
 	private LocalDateTime completionDate;
@@ -48,5 +51,24 @@ public class Order {
 
 	@OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
 	private List<OrderedItem> orderedItems;
+
+	@PrePersist
+	public void beingCreated(){
+		requestDate = LocalDateTime.now();
+		calculateTotal();
+	}
+
+	@PreUpdate
+	public void updating(){
+		updatedRequestDate = LocalDateTime.now();
+		calculateTotal();
+	}
+
+	public void calculateTotal(){
+		if (orderedItems != null){
+			total = orderedItems.stream().map(OrderedItem::getPriceProduct).reduce(BigDecimal.ZERO, BigDecimal::add);
+		}
+	}
+
 
 }
