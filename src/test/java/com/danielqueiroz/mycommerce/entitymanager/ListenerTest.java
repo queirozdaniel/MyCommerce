@@ -7,10 +7,10 @@ import com.danielqueiroz.mycommerce.model.OrderStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class CallbacksTest extends EntityManagerTest {
+public class ListenerTest extends EntityManagerTest {
 
     @Test
-    public void testingUpdateDate(){
+    public void testingGenInvoice(){
 
         Client client = entityManager.find(Client.class, 1L);
 
@@ -28,9 +28,8 @@ public class CallbacksTest extends EntityManagerTest {
         entityManager.clear();
 
         Order orderNew = entityManager.find(Order.class, order.getId());
+        //Assertions.assertNotNull(orderNew.getInvoice());
         Assertions.assertNotNull(orderNew.getRequestDate());
-        Assertions.assertNotNull(orderNew.getUpdatedRequestDate());
-
     }
 
 }

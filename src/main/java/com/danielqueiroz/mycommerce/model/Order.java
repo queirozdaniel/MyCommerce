@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.danielqueiroz.mycommerce.listener.GenerateInvoiceListener;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@EntityListeners({GenerateInvoiceListener.class})
 @Table(name = "`order`")
 public class Order {
 
@@ -70,5 +72,8 @@ public class Order {
 		}
 	}
 
+	public boolean wasPaid(){
+		return OrderStatus.PAID.equals(status);
+	}
 
 }
