@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class RelationshipManyToOneTest extends EntityManagerTest {
 
     @Test
-    public void checkRelationship(){
+    public void checkRelationship() {
         Client client = entityManager.find(Client.class, 1L);
 
         Order order = new Order();
@@ -33,7 +33,9 @@ public class RelationshipManyToOneTest extends EntityManagerTest {
 
 
     @Test
-    public void checkRelationshipOrderedItem(){
+    public void checkRelationshipOrderedItem() {
+        entityManager.getTransaction().begin();
+
         Client client = entityManager.find(Client.class, 1L);
         Product product = entityManager.find(Product.class, 1L);
 
@@ -43,20 +45,23 @@ public class RelationshipManyToOneTest extends EntityManagerTest {
         order.setTotal(BigDecimal.TEN);
         order.setClient(client);
 
+        entityManager.persist(order);
+        entityManager.flush();
+
         OrderedItem orderedItem = new OrderedItem();
+        orderedItem.setOrderId(order.getId());
+        orderedItem.setProductId(product.getId());
         orderedItem.setPriceProduct(product.getPrice());
         orderedItem.setAmount(1);
         orderedItem.setOrder(order);
         orderedItem.setProduct(product);
 
-        entityManager.getTransaction().begin();
-        entityManager.persist(order);
         entityManager.persist(orderedItem);
         entityManager.getTransaction().commit();
 
         entityManager.clear();
 
-        OrderedItem orderItemNew = entityManager.find(OrderedItem.class, orderedItem.getId());
+        OrderedItem orderItemNew = entityManager.find(OrderedItem.class, new OrderedItemID(order.getId(), product.getId()));
         Assertions.assertNotNull(orderItemNew.getProduct());
         Assertions.assertNotNull(orderItemNew.getOrder());
 
