@@ -11,20 +11,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@IdClass(OrderedItemID.class)
 @Entity
 @Table(name = "ordered_item")
 public class OrderedItem {
-
-	@EqualsAndHashCode.Include
-	@Id
-	@Column(name = "order_id")
-	private Long orderId;
-
-	@EqualsAndHashCode.Include
-	@Id
-	@Column(name = "product_id")
-	private Long productId;
+	
+	@EmbeddedId
+	private OrderedItemID id;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "order_id", insertable = false, updatable = false)
