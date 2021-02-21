@@ -1,6 +1,7 @@
 package com.danielqueiroz.mycommerce.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.*;
@@ -20,6 +21,13 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(name = "creation_date", updatable = false)
+	private LocalDateTime creationDate;
+
+	@Column(name = "updated_date", insertable = false)
+	private LocalDateTime updatedDate;
+
 	private String name;
 	private String description;
 	private BigDecimal price;

@@ -28,13 +28,13 @@ public class Order {
 	@JoinColumn(name = "client_id")
 	private Client client;
 	
-	@Column(name = "request_date")
+	@Column(name = "request_date", updatable = false)
 	private LocalDateTime requestDate;
 
-	@Column(name = "updated_request_date")
+	@Column(name = "updated_request_date", insertable = false)
 	private LocalDateTime updatedRequestDate;
 	
-	@Column(name = "completion_date")
+	@Column(name = "completion_date", insertable = false)
 	private LocalDateTime completionDate;
 	
 	@OneToOne(mappedBy = "order")
