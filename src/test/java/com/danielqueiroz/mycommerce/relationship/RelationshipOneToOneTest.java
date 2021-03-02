@@ -38,7 +38,7 @@ public class RelationshipOneToOneTest extends EntityManagerTest {
         Invoice invoice = new Invoice();
         invoice.setOrder(order);
         invoice.setIssuanceDate(new Date());
-        invoice.setXml("Test");
+        invoice.setXml(new byte[]{01});
 
         entityManager.getTransaction().begin();
         entityManager.persist(invoice);
