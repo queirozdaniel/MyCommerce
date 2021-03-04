@@ -32,6 +32,9 @@ public class Product {
 	private String description;
 	private BigDecimal price;
 
+	@Lob
+	private byte[] photo;
+
 	@ManyToMany
 	@JoinTable(name = "product_category",
 			joinColumns = @JoinColumn(name = "product_id"),

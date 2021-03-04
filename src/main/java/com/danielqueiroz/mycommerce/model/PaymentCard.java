@@ -8,24 +8,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "payment_card")
-public class PaymentCard {
+public class PaymentCard extends Payment{
 
-	@EqualsAndHashCode.Include
-	@Id
-	@Column(name = "order_id")
-	private Long id;
-
-	@MapsId
-	@OneToOne(optional = false)
-	@JoinColumn(name = "order_id")
-	private Order order;
-	
-	@Enumerated(EnumType.STRING)
-	private PaymentStatus status;
-	
 	@Column(name = "card_number")
 	private String cardNumber;
 	
