@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "payment_card")
+@DiscriminatorValue("card")
 public class PaymentCard extends Payment{
 
 	@Column(name = "card_number")

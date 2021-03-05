@@ -10,6 +10,8 @@ import javax.persistence.*;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@DiscriminatorColumn(name = "payment_type", discriminatorType = DiscriminatorType.STRING)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "payment")
 public abstract class Payment {
 
