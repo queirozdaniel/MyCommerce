@@ -14,7 +14,9 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "product")
+@Table(name = "product",
+		uniqueConstraints = {@UniqueConstraint(name = "unq_name", columnNames = {"name"})},
+		indexes = {@Index(name = "idx_name", columnList = "name")})
 public class Product {
 
 	@EqualsAndHashCode.Include
@@ -22,14 +24,19 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "creation_date", updatable = false)
+	@Column(name = "creation_date", updatable = false, nullable = false)
 	private LocalDateTime creationDate;
 
 	@Column(name = "updated_date", insertable = false)
 	private LocalDateTime updatedDate;
 
+	@Column(length = 150, nullable = false)
 	private String name;
+
+	@Column(columnDefinition = "varchar(255) not null default 'descricao'")
 	private String description;
+
+	@Column(precision = 15, scale = 2)
 	private BigDecimal price;
 
 	@Lob
@@ -47,7 +54,7 @@ public class Product {
 	@ElementCollection
 	@CollectionTable(name = "product_tag",
 			joinColumns = @JoinColumn(name = "product_id"))
-	@Column(name = "tag")
+	@Column(name = "tag", length = 50, nullable = false)
 	private List<String> tags;
 
 	@ElementCollection

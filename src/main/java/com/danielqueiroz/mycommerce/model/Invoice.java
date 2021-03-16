@@ -27,9 +27,10 @@ public class Invoice {
 
 	// Large Object
 	@Lob
+	@Column(nullable = false)
 	private byte[] xml;
 	
-	@Column(name = "issuance_date")
+	@Column(name = "issuance_date", nullable = false)
 	private Date issuanceDate;
 	
 }

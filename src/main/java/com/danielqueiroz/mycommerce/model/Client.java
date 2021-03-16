@@ -23,8 +23,10 @@ public class Client {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(length = 100, nullable = false)
 	private String name;
 
+	@Column(length = 14, nullable = false)
 	private String cpf;
 
 	@ElementCollection
@@ -33,7 +35,8 @@ public class Client {
 	@MapKeyColumn(name = "type")
 	@Column(name = "description")
 	private Map<String, String> contacts;
-	
+
+	@Column(length = 30, nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 

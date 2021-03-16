@@ -40,8 +40,10 @@ public class Order {
 	@OneToOne(mappedBy = "order")
 	private Invoice invoice;
 
+	@Column(precision = 19, scale = 2, nullable = false)
 	private BigDecimal total;
-	
+
+	@Column(length = 30, nullable = false)
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
 	

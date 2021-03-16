@@ -13,7 +13,7 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "category",
-		uniqueConstraints = {@UniqueConstraint(name = {"unq_name"}, columnNames = {"name"})},
+		uniqueConstraints = {@UniqueConstraint(name = "unq_name", columnNames = {"name"})},
 		indexes = {@Index(name = "idx_name", columnList = "name")})
 public class Category {
 

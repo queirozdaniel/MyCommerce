@@ -28,9 +28,10 @@ public class OrderedItem {
 	@JoinColumn(name = "product_id")
 	private Product product;
 
-	@Column(name = "price_product")
+	@Column(name = "price_product", nullable = false)
 	private BigDecimal priceProduct;
-	
+
+	@Column(nullable = false)
 	private Integer amount;
 	
 }

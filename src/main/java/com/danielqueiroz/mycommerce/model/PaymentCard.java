@@ -13,7 +13,7 @@ import lombok.Setter;
 @Table(name = "payment_card")
 public class PaymentCard extends Payment{
 
-	@Column(name = "card_number")
+	@Column(name = "card_number", length = 50, nullable = false)
 	private String cardNumber;
 	
 }

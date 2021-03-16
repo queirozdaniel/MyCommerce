@@ -22,5 +22,6 @@ public class Stock {
 	@JoinColumn(name = "product_id")
 	private Product product;
 
+	@Column(columnDefinition = "int(9) not null")
 	private Integer amount;
 }
