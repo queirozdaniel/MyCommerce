@@ -10,7 +10,7 @@ public class SelfRelationshipTest extends EntityManagerTest {
     @Test
     public void checkRelationship(){
         Category categoryFather = new Category();
-        categoryFather.setName("Eletronicos");
+        categoryFather.setName("Eletronicos Importados");
 
         Category category = new Category();
         category.setName("Smartphone");

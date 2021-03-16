@@ -14,7 +14,7 @@ public class TransactionsTest extends EntityManagerTest {
         entityManager.getTransaction().commit();
 
         // Cancel Transaction
-        entityManager.getTransaction().rollback();
+        //entityManager.getTransaction().rollback();
     }
 
 }

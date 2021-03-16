@@ -1,7 +1,9 @@
 package com.danielqueiroz.mycommerce.initial;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
+import com.danielqueiroz.mycommerce.model.OrderedItem;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +17,7 @@ public class TransactionsTest extends EntityManagerTest{
 		Product product = new Product();
 //		product.setId(2L);
 		product.setName("Camêra Kanon");
+		product.setCreationDate(LocalDateTime.now());
 		product.setDescription("A melhor qualidade para registar seus melhores momentos");
 		product.setPrice(BigDecimal.valueOf(200));
 		
@@ -33,8 +36,7 @@ public class TransactionsTest extends EntityManagerTest{
 
 	@Test
 	public void removeObject() {
-		Product product = entityManager.find(Product.class, 1L);
-		
+		Product product = entityManager.find(Product.class, 3L);
 		entityManager.getTransaction().begin();
 		entityManager.remove(product);
 		entityManager.getTransaction().commit();
@@ -48,17 +50,18 @@ public class TransactionsTest extends EntityManagerTest{
 		Product product = new Product();
 //		product.setId(1L);
 		product.setName("Kindle Pro");
+		product.setCreationDate(LocalDateTime.now());
 		product.setDescription("Conheça o novo modelo do eReader mais completo");
 		product.setPrice(BigDecimal.valueOf(400));
 		
 		// in this update all values are updated (if you not specify, the value is null)
-		entityManager.merge(product);
+		Product saved = entityManager.merge(product);
 
 		entityManager.getTransaction().begin();
 		entityManager.getTransaction().commit();
 		entityManager.clear();
 		
-		Product checked = entityManager.find(Product.class, product.getId());
+		Product checked = entityManager.find(Product.class, saved.getId());
 		Assertions.assertNotNull(checked);
 		Assertions.assertEquals("Kindle Pro", checked.getName());
 	}
@@ -80,17 +83,18 @@ public class TransactionsTest extends EntityManagerTest{
 	@Test
 	public void insertObjectWithMerge() {
 		Product product = new Product();
-//		product.setId(3L);
+		//product.setId(3L);
 		product.setName("Microfone Elgato");
+		product.setCreationDate(LocalDateTime.now());
 		product.setDescription("A melhor captuara e qualidade para sua voz");
 		product.setPrice(BigDecimal.valueOf(600));
 		
 		entityManager.getTransaction().begin();
-		entityManager.merge(product);
+		Product saved = entityManager.merge(product);
 		entityManager.getTransaction().commit();
 		entityManager.clear();
 		
-		Product checked = entityManager.find(Product.class, product.getId());
+		Product checked = entityManager.find(Product.class, saved.getId());
 		Assertions.assertNotNull(checked);
 	}
 	

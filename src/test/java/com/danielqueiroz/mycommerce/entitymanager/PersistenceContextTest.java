@@ -5,6 +5,7 @@ import com.danielqueiroz.mycommerce.model.Product;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class PersistenceContextTest extends EntityManagerTest {
 
@@ -19,6 +20,7 @@ public class PersistenceContextTest extends EntityManagerTest {
         // Product1 is out PC
         Product product1 = new Product();
         product1.setName("Canecá");
+        product1.setCreationDate(LocalDateTime.now());
         product1.setPrice(new BigDecimal(15.0));
         product1.setDescription("Uma caneca simples, ótima para tomar café");
         entityManager.persist(product1); // Product1 is added to PC

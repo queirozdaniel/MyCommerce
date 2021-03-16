@@ -30,6 +30,7 @@ public class RelationshipOneToManyTest extends EntityManagerTest {
         Assertions.assertFalse(clientNew.getOrders().isEmpty());
     }
 
+    // Need to fix
     @Test
     public void checkRelationshipOrderedItem(){
         Client client = entityManager.find(Client.class, 1L);
@@ -42,6 +43,7 @@ public class RelationshipOneToManyTest extends EntityManagerTest {
         order.setClient(client);
 
         OrderedItem orderedItem = new OrderedItem();
+        orderedItem.setId(new OrderedItemID());
         orderedItem.setPriceProduct(product.getPrice());
         orderedItem.setAmount(1);
         orderedItem.setOrder(order);

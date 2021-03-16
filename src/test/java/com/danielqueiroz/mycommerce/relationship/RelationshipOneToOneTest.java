@@ -15,6 +15,7 @@ public class RelationshipOneToOneTest extends EntityManagerTest {
     @Test
     public void checkRelationship(){
         Order order = entityManager.find(Order.class, 1L);
+        order.setRequestDate(LocalDateTime.now());
 
         PaymentCard paymentCard = new PaymentCard();
         paymentCard.setCardNumber("12344");

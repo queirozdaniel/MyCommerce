@@ -33,7 +33,7 @@ public class Product {
 	@Column(length = 150, nullable = false)
 	private String name;
 
-	@Column(columnDefinition = "varchar(255) not null default 'descricao'")
+	@Column(columnDefinition = "varchar(255) default 'descricao'")
 	private String description;
 
 	@Column(precision = 15, scale = 2)

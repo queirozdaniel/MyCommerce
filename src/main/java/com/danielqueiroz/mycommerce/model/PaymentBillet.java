@@ -13,7 +13,7 @@ import lombok.Setter;
 @Table(name = "payment_billet")
 public class PaymentBillet extends Payment{
 
-	@Column(name = "bar_code", length = 100, nullable = false)
+	@Column(name = "bar_code", length = 100)
 	private String barCode;
 	
 }

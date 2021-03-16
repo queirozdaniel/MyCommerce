@@ -1,5 +1,6 @@
 package com.danielqueiroz.mycommerce.initial;
 
+import com.danielqueiroz.mycommerce.model.Gender;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,9 @@ public class ClientTest extends EntityManagerTest{
 		Client client = new Client();
 //		client.setId(2L);
 		client.setName("Luana Silva");
-		
+		client.setCpf("123256789");
+		client.setGender(Gender.FEMALE);
+
 		entityManager.persist(client);
 		entityManager.getTransaction().begin();
 		entityManager.getTransaction().commit();
@@ -33,6 +36,8 @@ public class ClientTest extends EntityManagerTest{
 	public void updateClient() {
 		Client client = entityManager.find(Client.class, 3L);
 		client.setName("Luiz Ricardo da Silva");
+		client.setCpf("123456789");
+		client.setGender(Gender.MALE);
 		
 		entityManager.merge(client);
 		entityManager.getTransaction().begin();

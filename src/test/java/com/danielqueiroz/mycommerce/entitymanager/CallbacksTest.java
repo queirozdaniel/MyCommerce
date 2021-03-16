@@ -7,6 +7,9 @@ import com.danielqueiroz.mycommerce.model.OrderStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 public class CallbacksTest extends EntityManagerTest {
 
     @Test
@@ -16,6 +19,8 @@ public class CallbacksTest extends EntityManagerTest {
 
         Order order = new Order();
         order.setClient(client);
+        order.setTotal(BigDecimal.TEN);
+        order.setRequestDate(LocalDateTime.now());
         order.setStatus(OrderStatus.WAITING);
         entityManager.getTransaction().begin();
 

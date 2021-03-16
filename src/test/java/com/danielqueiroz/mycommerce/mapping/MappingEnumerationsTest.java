@@ -15,6 +15,7 @@ public class MappingEnumerationsTest extends EntityManagerTest {
 		Client client = new Client();
 //		client.setId(5L);
 		client.setName("José da Silva");
+		client.setCpf("121121454");
 		client.setGender(Gender.MALE);
 		
 		entityManager.getTransaction().begin();

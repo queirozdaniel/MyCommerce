@@ -13,6 +13,8 @@ public class RelationshipManyToOneTest extends EntityManagerTest {
     @Test
     public void checkRelationship() {
         Client client = entityManager.find(Client.class, 1L);
+        client.setCpf("978151354");
+        client.setGender(Gender.MALE);
 
         Order order = new Order();
         order.setStatus(OrderStatus.WAITING);
