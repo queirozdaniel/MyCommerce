@@ -13,7 +13,9 @@ import java.util.Map;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "client")
+@Table(name = "client",
+		uniqueConstraints = {@UniqueConstraint(name = "unq_cpf", columnNames = {"cpf"})},
+		indexes = {@Index(name = "idx_name", columnList = "name")})
 public class Client {
 
 	@EqualsAndHashCode.Include
@@ -22,6 +24,8 @@ public class Client {
 	private Long id;
 
 	private String name;
+
+	private String cpf;
 
 	@ElementCollection
 	@CollectionTable(name = "client_contact",
