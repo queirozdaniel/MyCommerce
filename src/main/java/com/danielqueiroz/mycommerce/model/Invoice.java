@@ -22,7 +22,7 @@ public class Invoice {
 
 	@MapsId
 	@OneToOne
-	@JoinColumn(name = "order_id")
+	@JoinColumn(name = "order_id", nullable = false, foreignKey = @ForeignKey(name = "fk_invoice_order"))
 	private Order order;
 
 	// Large Object

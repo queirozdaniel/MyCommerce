@@ -31,7 +31,8 @@ public class Client {
 
 	@ElementCollection
 	@CollectionTable(name = "client_contact",
-			joinColumns = @JoinColumn(name = "client_id"))
+			joinColumns = @JoinColumn(name = "client_id"),
+			foreignKey = @ForeignKey(name = "fk_client_contacts"))
 	@MapKeyColumn(name = "type")
 	@Column(name = "description")
 	private Map<String, String> contacts;

@@ -19,7 +19,7 @@ public class Stock {
 	private Long id;
 
 	@OneToOne(optional = false)
-	@JoinColumn(name = "product_id")
+	@JoinColumn(name = "product_id", foreignKey = @ForeignKey(name = "fk_stock_product"))
 	private Product product;
 
 	@Column(columnDefinition = "int(9) not null")

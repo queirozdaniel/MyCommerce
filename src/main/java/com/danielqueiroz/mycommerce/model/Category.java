@@ -24,7 +24,7 @@ public class Category {
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name = "category_father_id")
+	@JoinColumn(name = "category_father_id", foreignKey = @ForeignKey(name = "fk_category_categoryFather"))
 	private Category categoryFather;
 
 	@OneToMany(mappedBy = "categoryFather")

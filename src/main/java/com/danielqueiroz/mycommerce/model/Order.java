@@ -25,7 +25,7 @@ public class Order {
 	private Long id;
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "client_id")
+	@JoinColumn(name = "client_id", foreignKey = @ForeignKey(name = "fk_order_client"))
 	private Client client;
 	
 	@Column(name = "request_date", updatable = false)

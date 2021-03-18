@@ -33,7 +33,7 @@ public class Product {
 	@Column(length = 150, nullable = false)
 	private String name;
 
-	@Column(columnDefinition = "varchar(255) default 'descricao'")
+	@Lob
 	private String description;
 
 	@Column(precision = 15, scale = 2)
@@ -44,8 +44,9 @@ public class Product {
 
 	@ManyToMany
 	@JoinTable(name = "product_category",
-			joinColumns = @JoinColumn(name = "product_id"),
-			inverseJoinColumns = @JoinColumn(name = "category_id"))
+			joinColumns = @JoinColumn(name = "product_id", foreignKey = @ForeignKey(name = "fk_product_category_product")),
+			inverseJoinColumns = @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_product_category_category"))
+	)
 	private List<Category> categories;
 
 	@OneToOne(mappedBy = "product")
